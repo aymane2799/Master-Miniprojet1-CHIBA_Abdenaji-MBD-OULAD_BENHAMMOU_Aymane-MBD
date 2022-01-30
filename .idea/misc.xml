@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_etudiants.xml" value="0.15715579710144928" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_main.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$" />
   </component>

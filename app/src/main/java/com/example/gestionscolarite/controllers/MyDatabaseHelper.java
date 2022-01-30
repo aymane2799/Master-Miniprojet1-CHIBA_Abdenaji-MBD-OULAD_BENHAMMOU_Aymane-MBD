@@ -2,12 +2,18 @@ package com.example.gestionscolarite.controllers;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
+    // Declaration des variables
+    private Context context;
+
     // Initialisation des variables
+
     //  Nom de la base de données
     private static final String DATABASE_NAME = "Scolarite";
     //  Version
@@ -46,6 +52,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -90,7 +97,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean insertIntoModules(String nomModule){
+    public void insertIntoModules(String nomModule){
         // Get Writeable Database
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -99,6 +106,24 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         moduleValues.put(MODULE_NOM, nomModule);
 
         // Insert Data into Database
-        db.insert(TABLE_MODULES, null, moduleValues);
+        long result = db.insert(TABLE_MODULES, null, moduleValues);
+        if (result == -1){
+            Toast.makeText(context, "Erreur Création Module", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Module créé avec succes", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    Cursor getModules(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "Select * from " + TABLE_MODULES;
+
+        Cursor cursor = null;
+
+        if (db != null){
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
     }
 }

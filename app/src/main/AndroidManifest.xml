@@ -10,6 +10,21 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.GestionScolarite">
         <activity
+                android:name=".activities.Etudiants"
+                android:exported="true"
+                android:label="Etudiants"
+                android:parentActivityName=".activities.MainActivity"/>
+        <activity
+                android:name=".activities.Modules"
+                android:exported="true"
+                android:label="Modules"
+                android:parentActivityName=".activities.MainActivity"/>
+        <activity
+                android:name=".activities.Filieres"
+                android:exported="true"
+                android:label="Filières"
+                android:parentActivityName=".activities.MainActivity"/>
+        <activity
                 android:name=".activities.MainActivity"
                 android:exported="true">
             <intent-filter>
