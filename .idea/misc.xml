@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/drawable/ic_add.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_add_module.xml" value="0.22" />
         <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_etudiants.xml" value="0.15715579710144928" />
-        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_modules.xml" value="0.2" />
       </map>
     </option>
   </component>

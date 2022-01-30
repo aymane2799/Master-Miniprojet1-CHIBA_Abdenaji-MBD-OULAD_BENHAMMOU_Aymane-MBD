@@ -10,17 +10,20 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.GestionScolarite">
         <activity
-                android:name=".activities.Etudiants"
+                android:name=".activities.AddModuleActivity"
+                android:exported="true"/>
+        <activity
+                android:name=".activities.EtudiantsActivity"
                 android:exported="true"
                 android:label="Etudiants"
                 android:parentActivityName=".activities.MainActivity"/>
         <activity
-                android:name=".activities.Modules"
+                android:name=".activities.ModulesActivity"
                 android:exported="true"
                 android:label="Modules"
                 android:parentActivityName=".activities.MainActivity"/>
         <activity
-                android:name=".activities.Filieres"
+                android:name=".activities.FilieresActivity"
                 android:exported="true"
                 android:label="Filières"
                 android:parentActivityName=".activities.MainActivity"/>

@@ -51,15 +51,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void toFilieresDetails(){
-        Intent intent = new Intent(MainActivity.this, Filieres.class);
+        Intent intent = new Intent(MainActivity.this, FilieresActivity.class);
         startActivity(intent);
     }
     void toModulesDetails(){
-        Intent intent = new Intent(MainActivity.this, Modules.class);
+        Intent intent = new Intent(MainActivity.this, ModulesActivity.class);
         startActivity(intent);
     }
     void toEtudiantsDetails(){
-        Intent intent = new Intent(MainActivity.this, Etudiants.class);
+        Intent intent = new Intent(MainActivity.this, EtudiantsActivity.class);
         startActivity(intent);
     }
 }
