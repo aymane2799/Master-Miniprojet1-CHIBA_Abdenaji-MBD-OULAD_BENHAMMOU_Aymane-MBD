@@ -1,7 +1,8 @@
-package com.example.gestionscolarite;
+package com.example.gestionscolarite.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.gestionscolarite.R;
 
 public class MainActivity extends AppCompatActivity {
 
