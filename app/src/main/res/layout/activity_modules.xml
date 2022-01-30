@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.ModulesActivity">
+        tools:context=".activities.ModulesActivity" android:paddingTop="50dp">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -13,16 +13,16 @@
             android:contentDescription="Ajouter Module"
             android:clickable="true"
             android:focusable="true"
-            app:tint="@color/white"
+            app:tint="@color/light"
             app:srcCompat="@drawable/ic_add"
             android:id="@+id/modulesActionButton" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="30dp"
-            android:layout_marginBottom="30dp" app:backgroundTint="#673AB7"/>
+            android:layout_marginBottom="30dp" app:backgroundTint="@color/primary"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteY="324dp"
             tools:layout_editor_absoluteX="202dp"
-            android:id="@+id/recyclerView">
+            android:id="@+id/modulesRecyclerView">
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,16 @@
 package com.example.gestionscolarite.models;
 
 public class Module {
-    Integer id_module;
-    String nom_module;
+
+    //  Nom des tables
+    public static final String TABLE = "modules";
+    //  Champs des Tables
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_NOM = "nom_module";
+
+
+    private Integer id_module;
+    private String nom_module;
 
     public Module() {
     }

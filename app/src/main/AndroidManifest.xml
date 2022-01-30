@@ -10,8 +10,16 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.GestionScolarite">
         <activity
+                android:name=".activities.AddFiliereActivity"
+                android:exported="true"
+                android:label="Gestion de Filières"
+                android:parentActivityName=".activities.FilieresActivity"
+        />
+        <activity
                 android:name=".activities.AddModuleActivity"
-                android:exported="true"/>
+                android:exported="true"
+                android:label="Gestion de Modules"
+                android:parentActivityName=".activities.ModulesActivity"/>
         <activity
                 android:name=".activities.EtudiantsActivity"
                 android:exported="true"

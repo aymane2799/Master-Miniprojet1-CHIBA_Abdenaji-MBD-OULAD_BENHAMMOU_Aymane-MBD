@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
+import com.example.gestionscolarite.models.Filiere;
+import com.example.gestionscolarite.models.Module;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     // Declaration des variables
@@ -19,16 +21,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     //  Version
     private static final int DATABASE_VERSION = 1;
     //  Nom des tables
-    private static final String TABLE_MODULES = "modules";
     private static final String TABLE_ETUDIANTS = "etudiants";
     private static final String TABLE_FILIERES = "filieres";
     private static final String TABLE_EVALUATIONS = "evaluations";
     private static final String TABLE_PLANINGS = "planings";
 
     //  Champs des Tables
-        // modules
-    private static final String MODULE_ID = "_id";
-    private static final String MODULE_NOM = "nom_module";
+
         // etudiants
     private static final String ETUDIANT_ID = "_id";
     private static final String ETUDIANT_CNE = "cne_etudiant";
@@ -36,9 +35,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String ETUDIANT_PRENOM = "prenom_etudiant";
     private static final String ETUDIANT_NIVEAU = "niveau";
     private static final String ETUDIANT_ID_FILIERE = "id_filiere";
-        // filieres
-    private static final String FILIERE_ID = "_id";
-    private static final String FILIERE_NOM = "nom_filiere";
+
         // evaluations
     private static final String EVALUATION_ID = "_id";
     private static final String EVALUATION_ID_ETUDIANT = "id_etudiant";
@@ -58,39 +55,40 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Creation des tables
-        String modules = "CREATE TABLE " + TABLE_MODULES
-                + " ("+ MODULE_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ MODULE_NOM +" TEXT);";
-        String etudiants = "CREATE TABLE " + TABLE_ETUDIANTS
-                + " ("+ ETUDIANT_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ ETUDIANT_CNE +" TEXT,"
-                + ETUDIANT_NOM +" TEXT,"+ ETUDIANT_PRENOM +" TEXT," + ETUDIANT_NIVEAU + " INTEGER, FOREIGN KEY ("
-                + ETUDIANT_ID_FILIERE +") REFERENCES "+ TABLE_FILIERES +"("+ FILIERE_ID +"));";
+        String modules = "CREATE TABLE " + Module.TABLE
+                + " ("+ Module.COLUMN_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ Module.COLUMN_NOM +" TEXT);";
 
         String filieres = "CREATE TABLE " + TABLE_FILIERES
-                + " ("+ FILIERE_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ FILIERE_NOM +" TEXT);";
+                + " ("+ Filiere.COLUMN_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ Filiere.COLUMN_NOM +" TEXT);";
+
+        String etudiants = "CREATE TABLE " + TABLE_ETUDIANTS
+                + " ("+ ETUDIANT_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ ETUDIANT_CNE +" TEXT,"
+                + ETUDIANT_NOM +" TEXT,"+ ETUDIANT_PRENOM +" TEXT," + ETUDIANT_NIVEAU + " TEXT, FOREIGN KEY (id_filere) REFERENCES  "+
+                Filiere.TABLE +"(" + Filiere.COLUMN_ID + "));";
 
         String evaluations = "CREATE TABLE " + TABLE_EVALUATIONS
                 + " ("+ EVALUATION_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ EVALUATION_NOTE +" DECIMAL(4,2), FOREIGN KEY ("
-                + ETUDIANT_ID + ") REFERENCES "+ TABLE_ETUDIANTS +"("+ ETUDIANT_ID +")"+" , FOREIGN KEY ("
-                + MODULE_ID + ") REFERENCES "+ TABLE_MODULES +"("+ MODULE_ID +"));";
+                + ETUDIANT_ID + ") REFERENCES "+ TABLE_ETUDIANTS +"("+ ETUDIANT_ID +")"+" , FOREIGN KEY (module_id) " +
+                "REFERENCES "+ Module.TABLE +"("+ Module.COLUMN_ID +"));";
 
         String plannings = "CREATE TABLE " + TABLE_PLANINGS
-                + " ("+ PLANNING_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ PLANNING_NIVEAU +" INTEGER, FOREIGN KEY ("
-                + FILIERE_ID + ") REFERENCES "+ TABLE_FILIERES +"("+ FILIERE_ID +")"+" , FOREIGN KEY ("
-                + MODULE_ID + ") REFERENCES "+ TABLE_MODULES +"("+ MODULE_ID +"));";
+                + " ("+ PLANNING_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ PLANNING_NIVEAU +" INTEGER, FOREIGN KEY (filiere_id) REFERENCES "
+                + Filiere.TABLE +"("+ Filiere.COLUMN_ID +")"+" , FOREIGN KEY (module_id) REFERENCES "
+                + Module.TABLE +"("+ Module.COLUMN_ID +"));";
 
         sqLiteDatabase.execSQL(modules);
-        sqLiteDatabase.execSQL(etudiants);
         sqLiteDatabase.execSQL(filieres);
-        sqLiteDatabase.execSQL(plannings);
+//        sqLiteDatabase.execSQL(etudiants);
+//        sqLiteDatabase.execSQL(plannings);
         sqLiteDatabase.execSQL(evaluations);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         //  Drop tables
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_MODULES);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Module.TABLE);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Filiere.TABLE);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_ETUDIANTS);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_FILIERES);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_EVALUATIONS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PLANINGS);
 
@@ -103,10 +101,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         // Create Content Values
         ContentValues moduleValues = new ContentValues();
-        moduleValues.put(MODULE_NOM, nomModule);
+        moduleValues.put(Module.COLUMN_NOM, nomModule);
 
         // Insert Data into Database
-        long result = db.insert(TABLE_MODULES, null, moduleValues);
+        long result = db.insert(Module.TABLE, null, moduleValues);
         if (result == -1){
             Toast.makeText(context, "Erreur Création Module", Toast.LENGTH_SHORT).show();
         }else{
@@ -116,7 +114,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     Cursor getModules(){
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "Select * from " + TABLE_MODULES;
+        String query = "Select * from " + Module.TABLE;
 
         Cursor cursor = null;
 
