@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:orientation="vertical" android:id="@+id/mainModuleLayout">
+
+	<androidx.cardview.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+	>
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:padding="15dp">
+
+			<TextView
+					android:text="Langage C"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/moduleNomTxt"
+					android:textSize="20sp"
+					android:textStyle="bold" android:textColor="@color/dark"
+					app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+					android:layout_marginTop="10dp" android:layout_marginStart="4dp"/>
+			<ImageButton
+					android:layout_width="wrap_content"
+					android:layout_height="48dp" app:srcCompat="@drawable/ic_delete"
+					android:id="@+id/moduleDeleteBtn"
+					android:backgroundTint="@color/danger"
+					app:layout_constraintEnd_toEndOf="parent"
+					android:contentDescription="TODO"
+					app:layout_constraintStart_toEndOf="@+id/moduleNomTxt" app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintHorizontal_bias="1.0"/>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:id="@+id/mainEtudiantLayout">
+
+	<androidx.cardview.widget.CardView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:padding="15dp">
+
+			<ImageButton
+					android:layout_width="wrap_content"
+					android:layout_height="48dp" app:srcCompat="@drawable/ic_delete"
+					android:id="@+id/etudiantDeleteBtn"
+					android:backgroundTint="@color/danger"
+					app:layout_constraintEnd_toEndOf="parent"
+					android:contentDescription="TODO"
+					app:layout_constraintStart_toEndOf="@+id/filiereNomTxt" app:layout_constraintHorizontal_bias="1.0"
+					app:layout_constraintTop_toTopOf="parent"/>
+			<TextView
+					android:text="Oulad Benhamou Aymane"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/etudiant_nom"
+					app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+					android:textSize="20sp" android:textStyle="bold" android:textColor="#000000"/>
+			<TextView
+					android:text="P132481225"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/etudiant_cne" android:textSize="16sp"
+					app:layout_constraintStart_toStartOf="@+id/etudiant_nom"
+					app:layout_constraintTop_toBottomOf="@+id/etudiant_nom"
+					android:layout_marginTop="8dp"/>
+			<TextView
+					android:text=" | "
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/slash"
+					app:layout_constraintStart_toEndOf="@+id/etudiant_cne"
+					app:layout_constraintTop_toTopOf="@+id/etudiant_cne" android:textSize="16sp"
+					android:layout_marginStart="10dp"/>
+			<TextView
+					android:text="MBD"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:id="@+id/etudiant_filiere"
+					app:layout_constraintStart_toEndOf="@+id/slash"
+					app:layout_constraintTop_toTopOf="@+id/etudiant_cne" android:textSize="16sp"
+					android:layout_marginStart="10dp"/>
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</androidx.cardview.widget.CardView>
+</LinearLayout>

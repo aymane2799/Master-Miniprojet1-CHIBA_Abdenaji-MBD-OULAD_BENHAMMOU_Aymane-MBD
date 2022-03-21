@@ -4,12 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/drawable/ic_add.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_add_etudiant.xml" value="0.16" />
         <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_add_filiere.xml" value="0.21" />
-        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_add_module.xml" value="0.22" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_add_module.xml" value="0.25" />
         <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_etudiants.xml" value="0.15715579710144928" />
         <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_filieres.xml" value="0.151268115942029" />
         <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_modules.xml" value="0.2" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_modules.xml" value="0.22" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_update_etudiant.xml" value="0.18795289855072464" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_update_filiere.xml" value="0.25" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/activity_update_module.xml" value="0.25" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/etudiant_row.xml" value="0.5" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/filiere_row.xml" value="0.35118434603501547" />
+        <entry key="..\:/Users/ayman/Desktop/Programation/Android/Master-Miniprojet1-CHIBA_Abdenaji-MBD-OULAD_BENHAMMOU_Aymane-MBD/app/src/main/res/layout/module_row.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -6,8 +6,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.gestionscolarite.R;
+import com.example.gestionscolarite.controllers.EtudiantRepo;
+import com.example.gestionscolarite.controllers.FiliereRepo;
+import com.example.gestionscolarite.controllers.ModuleRepo;
 
 public class MainActivity extends AppCompatActivity {
+
+    FiliereRepo filRepo;
+    ModuleRepo moduleRepo;
+    EtudiantRepo etudiantRepo;
 
     TextView filieresCountTxt;
     TextView modulesCountTxt;
@@ -38,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         modulesDetailsBtn = findViewById(R.id.modulesDetailsBtn);
         etudiantsDetailsBtn = findViewById(R.id.etudiantsDetailsBtn);
 
+        filRepo = new FiliereRepo(this);
+        moduleRepo = new ModuleRepo(this);
+        etudiantRepo = new EtudiantRepo(this);
+
+
         filieresDetailsBtn.setOnClickListener(view -> {
             toFilieresDetails();
         });
@@ -48,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
             toEtudiantsDetails();
         });
 
+        filieresCountTxt.setText(String.valueOf(filRepo.getAllCount()));
+        modulesCountTxt.setText(String.valueOf(moduleRepo.getAllCount()));
+        etudiantsCountTxt.setText(String.valueOf(etudiantRepo.getAllCount()));
     }
 
     void toFilieresDetails(){

@@ -5,12 +5,12 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		tools:context=".activities.AddFiliereActivity" android:paddingLeft="20dp" android:paddingRight="20dp">
+		tools:context=".activities.UpdateModuleActivity" android:paddingLeft="20dp" android:paddingRight="20dp">
 
 	<TextView
-			android:text="Ajouter une Filière"
+			android:text="Modifier un Module"
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:id="@+id/addFiliereTitle"
+			android:layout_height="wrap_content" android:id="@+id/updateFiliereTitle"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
 			android:layout_marginTop="80dp" android:textSize="40sp" android:textStyle="bold"
@@ -20,30 +20,31 @@
 			android:layout_height="wrap_content"
 			android:inputType="textPersonName"
 			android:ems="10"
-			android:id="@+id/nomFiliereInput"
-			android:hint="Intitulé de Filière" android:height="48dp"
-			app:layout_constraintTop_toBottomOf="@+id/addFiliereTitle" android:layout_marginTop="60dp"
+			android:id="@+id/nomModuleInput2"
+			android:hint="Nom de Module" android:height="48dp"
+			app:layout_constraintTop_toBottomOf="@+id/updateFiliereTitle" android:layout_marginTop="40dp"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent" android:minHeight="48dp"/>
 
-	<Button
-			android:text="Ajouter"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:id="@+id/addFiliereBtn"
-			android:backgroundTint="@color/primary"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/modulesTv"
-			android:layout_marginTop="60dp"/>
 	<TextView
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:id="@+id/modulesTv"
-			android:hint="Choisir les modules"
+			android:layout_height="wrap_content" android:id="@+id/filieresTv2"
+			android:hint="Choisir les filieres"
 			android:padding="12dp"
 			android:layout_centerInParent="false"
 			android:drawableEnd="@android:drawable/arrow_down_float"
 			android:background="@android:drawable/editbox_background"
-			app:layout_constraintTop_toBottomOf="@+id/nomFiliereInput"
-			android:textSize="18sp" android:layout_marginTop="60dp"
+			android:textSize="18sp"
 			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-	/>
+			app:layout_constraintHorizontal_bias="0.25" app:layout_constraintTop_toBottomOf="@+id/nomModuleInput2"
+			android:layout_marginTop="60dp"/>
+	<Button
+			android:text="Modifier"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" android:id="@+id/updateModuleBtn"
+			android:backgroundTint="@color/primary"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintHorizontal_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/filieresTv2"
+			android:layout_marginTop="60dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

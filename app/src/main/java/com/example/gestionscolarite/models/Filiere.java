@@ -37,4 +37,15 @@ public class Filiere {
                 ", nom_filiere='" + nom_filiere + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Filiere filiere = (Filiere) o;
+
+        if (!getId_filiere().equals(filiere.getId_filiere())) return false;
+        return getNom_filiere().equals(filiere.getNom_filiere());
+    }
 }

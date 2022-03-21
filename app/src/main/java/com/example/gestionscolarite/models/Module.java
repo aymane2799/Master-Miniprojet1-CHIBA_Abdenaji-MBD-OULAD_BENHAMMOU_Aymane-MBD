@@ -48,5 +48,15 @@ public class Module {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Module module = (Module) o;
+
+        if (!getId_module().equals(module.getId_module())) return false;
+        return getNom_module().equals(module.getNom_module());
+    }
 
 }

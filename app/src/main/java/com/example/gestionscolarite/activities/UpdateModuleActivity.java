@@ -1,10 +1,11 @@
 package com.example.gestionscolarite.activities;
 
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,43 +16,69 @@ import com.example.gestionscolarite.models.Filiere;
 import com.example.gestionscolarite.models.Module;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class AddModuleActivity extends AppCompatActivity {
+public class UpdateModuleActivity extends AppCompatActivity {
 
     ModuleRepo moduleRepo;
 
-    EditText nomModuleInput;
-    Button addModuleBtn;
+    EditText nomModuleInput2;
+    Button updateModuleBtn;
 
-    TextView filieresTv;
+    String id, nom;
+
+    TextView filieresTv2;
     FiliereRepo filiereRepo;
     boolean[] selectedFilieres;
     ArrayList<Integer> filieresPositions = new ArrayList<>();
     ArrayList<Integer> filieresId = new ArrayList<>();
     ArrayList<String> filieresN;
     CharSequence[] filieresNames;
-    ArrayList<Filiere> filieres;
+    ArrayList<Filiere> filieres, moduleFilieres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_module);
+        setContentView(R.layout.activity_update_module);
 
-        moduleRepo = new ModuleRepo(AddModuleActivity.this);
-        filiereRepo = new FiliereRepo(AddModuleActivity.this);
+        moduleRepo = new ModuleRepo(this);
+        filiereRepo = new FiliereRepo(this);
 
-        filieresTv = findViewById(R.id.filieresTv);
+        filieresTv2 = findViewById(R.id.filieresTv2);
         filieres = filiereRepo.getAll();
         filieresN = filiereRepo.getAllNames();
         selectedFilieres = new boolean[filieresN.size()];
-        filieresNames = filieresN.toArray(new CharSequence[filieresN.size()]);
 
-        filieresTv.setOnClickListener(new View.OnClickListener() {
+        filieresNames = filieresN.toArray(new CharSequence[filieresN.size()]);
+        nomModuleInput2 = findViewById(R.id.nomModuleInput2);
+
+        getAndSetIntentData();
+
+        moduleFilieres = moduleRepo.filieres(Integer.valueOf(id));
+
+        for (int i=0; i<filieres.size(); i++){
+            if(moduleFilieres.contains(filieres.get(i))){
+                selectedFilieres[i] = true;
+            }
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i<moduleFilieres.size(); i++){
+            stringBuilder.append(moduleFilieres.get(i).getNom_filiere());
+            if(i != moduleFilieres.size()-1 ){
+                stringBuilder.append(", ");
+            }
+        }
+
+        filieresTv2.setText(stringBuilder.toString());
+
+        filieresTv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddModuleActivity.this);
-                builder.setTitle("Associer module aux filieres");
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateModuleActivity.this);
+                builder.setTitle("Associer module aux filieres : " + nom);
+
+//                builder.setCancelable(false);
 
                 builder.setMultiChoiceItems(filieresNames, selectedFilieres, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
@@ -59,7 +86,7 @@ public class AddModuleActivity extends AppCompatActivity {
                         if(isChecked){
                             filieresPositions.add(position);
                             filieresId.add(filieres.get(position).getId_filiere());
-                        }else{
+                        }else {
                             filieresPositions.remove(Integer.valueOf(position));
                             filieresId.remove(Integer.valueOf(filieres.get(position).getId_filiere()));
                         }
@@ -77,7 +104,7 @@ public class AddModuleActivity extends AppCompatActivity {
                                 stringBuilder.append(", ");
                             }
                         }
-                        filieresTv.setText(stringBuilder.toString());
+                        filieresTv2.setText(stringBuilder.toString());
                     }
                 });
 
@@ -96,53 +123,45 @@ public class AddModuleActivity extends AppCompatActivity {
                             filieresPositions.clear();
                             filieresId.clear();
                         }
-
-                        filieresTv.setText("");
+                        filieresTv2.setText("");
                     }
                 });
 
-                builder.show();
+
             }
         });
 
-
-        nomModuleInput = findViewById(R.id.nomModuleInput2);
-        addModuleBtn = findViewById(R.id.createModuleBtn);
-        addModuleBtn.setOnClickListener(view -> {
-            addModule();
+        updateModuleBtn = findViewById(R.id.updateModuleBtn);
+        updateModuleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateModule();
+            }
         });
-
     }
 
-    void addModule(){
-        Module module = new Module();
-        module.setNom_module(nomModuleInput.getText().toString().trim());
+    void updateModule(){
+        String nomFiliere = nomModuleInput2.getText().toString().trim();
 
-        Log.d("CREATE","============="+ module +"============");
-
-        int inserted = moduleRepo.insert(module);
-
-        if (inserted == -1){
+        long updated = moduleRepo.updateModule(id, nomFiliere);
+        if (updated == -1){
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }else{
-            if(filieresN.size()>0){
-                moduleRepo.associateToFiliere(String.valueOf(inserted), filieresId);
-            }
-            Toast.makeText(this, "Created", Toast.LENGTH_SHORT).show();
+            moduleRepo.associateToFiliere(id, filieresId);
+            Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show();
         }
-
-        Intent intent = new Intent(AddModuleActivity.this, ModulesActivity.class);
-        startActivity(intent);
     }
 
-    private List<String> filieresNames(List<Filiere> filieres){
-        List<String> filieresNames = new ArrayList<>();
+    void getAndSetIntentData(){
+        if(getIntent().hasExtra("idModule") && getIntent().hasExtra("nomModule")){
+            // Getting Data
+            id = getIntent().getStringExtra("idModule");
+            nom = getIntent().getStringExtra("nomModule");
 
-        for(int i=0; i<filieres.size(); i++){
-            filieresNames.add(filieres.get(i).getNom_filiere());
+            //Setting Data
+            nomModuleInput2.setText(nom);
+        }else{
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
-
-        Log.d("Filieres", "filieresNames: " + filieresNames.toString());
-        return filieresNames;
     }
 }
